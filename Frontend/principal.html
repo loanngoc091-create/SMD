@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMD – Principal Dashboard</title>
+  <link rel="stylesheet" href="css/lecture.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="top-header">
+  <div class="left">
+    <span class="menu-icon">☰</span>
+    <span class="uth">UTH – University of Transport HCMC</span>
+  </div>
+  <div class="right">
+    <span class="user">👔 Hiệu trưởng</span>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <h2 class="logo">SMD System</h2>
+    <p class="sub">Vai trò: Hiệu trưởng</p>
+
+    <nav>
+      <a onclick="showSection('dashboard')" class="active">📊 Tổng quan</a>
+      <a onclick="showSection('section-approval')">📄 Phê duyệt</a>
+      <a onclick="showSection('section-monitor')">📈 Giám sát</a>
+      <a class="logout" onclick="logout()">🚪 Đăng xuất</a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="content">
+
+    <h1 class="welcome">Chào Hiệu trưởng 👋</h1>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="section active" id="dashboard">
+
+      <div class="card-grid">
+
+        <div class="card green" data-target="section-approval">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">APPROVE</span>
+            <h3>Phê duyệt chiến lược</h3>
+            <p>Phê duyệt đề cương & quyết định học thuật</p>
+          </div>
+        </div>
+
+        <div class="card blue" data-target="section-monitor">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">MONITOR</span>
+            <h3>Giám sát hệ thống</h3>
+            <p>Báo cáo tổng quan & KPI</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== APPROVAL ===== -->
+    <div class="section" id="section-approval">
+
+        <div class="approval-section">
+            <h2>📄 Phê duyệt tài liệu & chiến lược</h2>
+
+            <table class="approval-table">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Tiêu đề</th>
+                <th>Loại</th>
+                <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="approvalTable">
+                <!-- JS render -->
+            </tbody>
+            </table>
+        </div>
+
+        <button class="btn ghost" onclick="showSection('dashboard')">
+            ⬅ Quay lại
+        </button>
+
+    </div>
+
+
+    <!-- ===== MONITOR ===== -->
+    <div class="section" id="section-monitor">
+      <h2>📈 Giám sát hệ thống</h2>
+
+      <div class="card-grid">
+
+        <div class="card purple">
+          <div class="card-body">
+            <span class="code">LECTURER</span>
+            <h3>Tổng giảng viên</h3>
+            <p id="kpiLecturer">--</p>
+          </div>
+        </div>
+
+        <div class="card orange">
+          <div class="card-body">
+            <span class="code">STUDENT</span>
+            <h3>Tổng sinh viên</h3>
+            <p id="kpiStudent">--</p>
+          </div>
+        </div>
+
+        <div class="card green">
+          <div class="card-body">
+            <span class="code">COURSE</span>
+            <h3>Khóa học</h3>
+            <p id="kpiCourse">--</p>
+          </div>
+        </div>
+
+        <div class="card red">
+          <div class="card-body">
+            <span class="code">PENDING</span>
+            <h3>Chờ phê duyệt</h3>
+            <p id="kpiPending">--</p>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">
+        ⬅ Quay lại
+      </button>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/principal.js"></script>
+</body>
+</html>

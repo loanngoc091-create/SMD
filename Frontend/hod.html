@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMD – HoD Dashboard</title>
+  <link rel="stylesheet" href="css/lecture.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="top-header">
+  <div class="left">
+    <span class="menu-icon">☰</span>
+    <span class="uth">UTH – University of Transport HCMC</span>
+  </div>
+  <div class="right">
+    <span class="user">👨‍💼 Trưởng bộ môn</span>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <h2 class="logo">SMD System</h2>
+    <p class="sub">Vai trò: HoD</p>
+
+    <nav>
+      <a onclick="showSection('dashboard')" class="active">📘 Rà soát</a>
+      <a onclick="showSection('section-approve')">✅ Phê duyệt</a>
+      <a onclick="showSection('section-manage')">📊 Tra cứu</a>
+      <a onclick="showSection('section-notify')">🔔 Thông báo</a>
+      <a class="logout" onclick="logout()">🚪 Đăng xuất</a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="content">
+
+    <h1 class="welcome">Chào bạn, Trưởng bộ môn 👋</h1>
+
+    <!-- ===== DASHBOARD ===== -->
+    <div class="section active" id="dashboard">
+      <div class="card-grid">
+
+        <div class="card green"data-target="section-program">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <span class="code">REVIEW</span>
+            <h3>Rà soát đề cương</h3>
+            <p>Kiểm tra CLO, nội dung, tuân thủ</p>
+          </div>
+        </div>
+
+        <div class="card blue" data-target="section-manage">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">ANALYZE</span>
+            <h3>Tra cứu & phân tích</h3>
+            <p>So sánh đề cương theo năm</p>
+          </div>
+        </div>
+
+        <div class="card orange">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">NOTIFY</span>
+            <h3>Thông báo</h3>
+            <p>Theo dõi trạng thái duyệt</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== APPROVE ===== -->
+    <section class="approval-section section" id="section-approve">
+  <h2>✅ Phê duyệt đề cương</h2>
+
+  <table class="table approval-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mã môn</th>
+        <th>Tên môn</th>
+        <th>Phiên bản</th>
+        <th>Trạng thái</th>
+        <th>Hành động</th>
+      </tr>
+    </thead>
+
+    <!-- JS sẽ render dữ liệu vào đây -->
+    <tbody id="approveTableBody"></tbody>
+  </table>
+
+  <button class="btn ghost" onclick="showSection('dashboard')">
+    ⬅ Quay lại
+  </button>
+</section>
+
+    <!-- ===== MANAGE ===== -->
+   <div class="section" id="section-manage">
+  <h2>📊 Tra cứu đề cương</h2>
+
+  <div style="margin-bottom:15px; display:flex; gap:18px; margin-top:15px;">
+    <input
+      type="text"
+      id="keyword"
+      placeholder="🔍 Tìm theo tên hoặc mã học phần..."
+      style="flex:1"
+      oninput="searchSyllabus()"
+    />
+    <button class="btn primary" onclick="searchSyllabus()">
+      Tìm
+    </button>
+  </div>
+
+    <tbody id="syllabusTableBody">
+      <!-- JS sẽ render vào đây -->
+    </tbody>
+  </table>
+
+  <button class="btn ghost" onclick="showSection('dashboard')">
+    ⬅ Quay lại
+  </button>
+</div>
+<!-- ================= REVIEW / CLO ================= -->
+<div class="section" id="section-program">
+  <h2>🔍 Rà soát CLO</h2>
+
+  <div class="form-box">
+    <button class="btn primary" onclick="loadCLO()">
+      Danh sách CLO
+    </button>
+  </div>
+
+  <table class="clo-table">
+    <colgroup>
+      <col style="width: 8%;">
+      <col style="width: 15%;">
+      <col style="width: 57%;">
+      <col style="width: 20%;">
+    </colgroup>
+
+    <thead id="cloThead" style="display:none">
+      <tr>
+        <th>ID</th>
+        <th>Mã CLO</th>
+        <th>Mô tả</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+
+    <tbody id="cloTable">
+      <tr>
+        <td colspan="4" style="text-align:center;">
+          📌 Chọn "Danh sách CLO"
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn ghost" onclick="showSection('dashboard')">
+    ⬅ Quay lại
+  </button>
+</div>
+
+  </main>
+</div>
+
+<script src="js/hod.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* ===== HEADER ===== */
+.top-header {
+  height: 60px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.top-header .menu-icon {
+  font-size: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.top-header .uth {
+  font-weight: 600;
+  color: #0f766e;
+}
+
+.top-header .user {
+  font-weight: 500;
+}
+
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px;
+  background: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
+}
+
+.sidebar .logo {
+  color: #0f766e;
+  margin-bottom: 5px;
+}
+
+.sidebar .sub {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 10px;
+  margin-bottom: 6px;
+  text-decoration: none;
+  color: #374151;
+  border-radius: 8px;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #e6f7f5;
+  color: #0f766e;
+}
+
+.sidebar .logout {
+  margin-top: 20px;
+  color: #dc2626;
+}
+
+/* ===== MAIN CONTENT ===== */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.welcome {
+  font-size: 26px;
+  margin-bottom: 28px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+/* ===== CARD GRID ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* header màu giống mẫu */
+.card-header {
+  height: 90px;
+}
+
+.card.green .card-header { background: #7dd3c7; }
+.card.red .card-header { background: #f08080; }
+.card.blue .card-header { background: #87cefa; }
+.card.purple .card-header { background: #c4b5fd; }
+.card.orange .card-header { background: #fdba74; }
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body .code {
+  font-size: 13px;
+  color: #2563eb;
+}
+
+.card-body h3 {
+  margin: 6px 0;
+}
+
+.card-body p {
+  font-size: 14px;
+  color: #6b7280;
+}
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.submitted {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.card {
+  cursor: pointer;
+}
+
+.card * {
+  pointer-events: none;
+}
+.section {
+  display: none !important;
+}
+
+.section.active {
+  display: block !important;
+}
+/* ===== FORM BOX ===== */
+.form-box {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;                 
+  margin-top: 20px;              
+  margin-bottom: 30px;
+  margin-right: 5px;            
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+  max-width:1200px;         /* RỘNG HƠN */
+  width: 100%;
+}
+
+
+.form-box h3 {
+  margin-bottom: 18px;
+  color: #0f766e;
+}
+
+/* ===== INPUT ===== */
+.form-box input[type="number"],
+.form-box input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.form-box input:focus {
+  outline: none;
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
+}
+
+/* ===== BUTTON ===== */
+.btn {
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  
+}
+
+.btn.primary {
+  background: #0f766e;
+  color: white;
+}
+
+.btn.primary:hover {
+  background: #115e59;
+}
+
+.btn.success {
+  background: #22c55e;
+  color: white;
+}
+
+.btn.success:hover {
+  background: #16a34a;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #374151;
+  margin-top: 10px;
+}
+
+.btn.ghost:hover {
+  color: #0f766e;
+}
+
+/* ===== SUBMIT BOX ===== */
+.submit-box {
+  border-left: 5px solid #22c55e;
+}
+.syllabus-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.syllabus-table th,
+.syllabus-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.status.green { color: #2ecc71; font-weight: 600; }
+.status.red { color: #e74c3c; font-weight: 600; }
+.status.orange { color: #f39c12; font-weight: 600; }
+
+/* =========================
+   HOD – APPROVAL SECTION
+========================= */
+.approval-section {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  margin-bottom: 24px;
+}
+
+.approval-section h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ===== TABLE ===== */
+.approval-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; 
+}
+
+.approval-table thead {
+  background: #f4f6f8;
+}
+
+.approval-table th,
+.approval-table td {
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.approval-table th {
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.approval-table tbody tr {
+  border-bottom: 1px solid #eee;
+  transition: background 0.2s ease;
+}
+
+.approval-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* ===== STATUS ===== */
+.status-pending {
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #fff3cd;
+  color: #856404;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ===== ACTION BUTTONS ===== */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-approve {
+  background: #22c55e;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-approve:hover {
+  background: #16a34a;
+}
+
+.btn-reject {
+  background: #f3f4f6;
+  color: #111;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reject:hover {
+  background: #e5e7eb;
+}
+
+.clo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Canh giữa TIÊU ĐỀ giống nội dung */
+.clo-table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Nội dung */
+.clo-table td {
+  vertical-align: middle;
+}
+
+/* Tùy từng cột */
+.clo-table th:nth-child(1),
+.clo-table td:nth-child(1) {
+  text-align: center; /* ID */
+  width: 8%;
+}
+
+.clo-table th:nth-child(2),
+.clo-table td:nth-child(2) {
+  text-align: center; /* Mã CLO */
+  width: 12%;
+}
+
+.clo-table th:nth-child(3),
+.clo-table td:nth-child(3) {
+  width: 55%;
+  text-align: left;
+  padding-left: 80px;
+  padding-right: 16px;
+}
+
+.clo-table th:nth-child(4),
+.clo-table td:nth-child(4) {
+  text-align: center; /* Thao tác */
+  width: 15%;
+  padding-right: 120px;
+}

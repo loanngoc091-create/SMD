@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMD – Academic Affairs Dashboard</title>
+  <link rel="stylesheet" href="css/lecture.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="top-header">
+  <div class="left">
+    <span class="menu-icon">☰</span>
+    <span class="uth">UTH – University of Transport HCMC</span>
+  </div>
+  <div class="right">
+    <span class="user">🏛️ Phòng Đào tạo</span>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <h2 class="logo">SMD System</h2>
+    <p class="sub">Vai trò: Academic Affairs</p>
+
+    <nav>
+      <a onclick="showSection('dashboard')" class="active">📘 Tổng quan</a>
+      <a onclick="showSection('section-approve')">✔️ Phê duyệt học vụ</a>
+      <a onclick="showSection('section-publish')">📢 Công bố đề cương</a>
+      <a onclick="showSection('section-program')">📚 CTĐT & PLO</a>
+      <a onclick="showSection('section-search')">📊 Tra cứu</a>
+      <a onclick="showSection('section-notify')">🔔 Thông báo</a>
+      <a class="logout" onclick="logout()">🚪 Đăng xuất</a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="content">
+
+    <h1 class="welcome">Chào bạn, Phòng Đào tạo 👋</h1>
+
+    <!-- ================= DASHBOARD ================= -->
+    <div class="section active" id="dashboard">
+      <div class="card-grid">
+
+        <div class="card green" data-target="section-approve">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">APPROVE</span>
+            <h3>Phê duyệt học vụ</h3>
+            <p>Kiểm tra PLO, chuẩn đào tạo</p>
+          </div>
+        </div>
+
+        <div class="card red" data-target="section-publish">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">PUBLISH</span>
+            <h3>Công bố đề cương</h3>
+            <p>Đưa đề cương cho sinh viên xem</p>
+          </div>
+        </div>
+
+        <div class="card blue" data-target="section-program">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">PROGRAM</span>
+            <h3>Quản lý CTĐT</h3>
+            <p>PLO, cấu trúc, tiên quyết</p>
+          </div>
+        </div>
+
+        <div class="card purple" data-target="section-search">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">ANALYSIS</span>
+            <h3>Tra cứu & phân tích</h3>
+            <p>So sánh đề cương toàn trường</p>
+          </div>
+        </div>
+
+        <div class="card orange" data-target="section-notify">
+          <div class="card-header"></div>
+          <div class="card-body">
+            <span class="code">NOTIFY</span>
+            <h3>Thông báo</h3>
+            <p>Theo dõi sự kiện phê duyệt</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ================= APPROVE ================= -->
+    <section class="approval-section section" id="section-approve">
+      <h2>✔️ Đề cương cần phê duyệt</h2>
+
+      <table class="approval-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Môn học</th>
+            <th>PLO</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="approveTable"></tbody>
+      </table>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">⬅ Quay lại</button>
+    </section>
+
+    <!-- ================= PUBLISH ================= -->
+    <section class="approval-section section" id="section-publish">
+      <h2>📢 Đề cương chờ Publish</h2>
+
+      <table class="approval-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Môn học</th>
+            <th>Trạng thái</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="publishTable"></tbody>
+      </table>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">⬅ Quay lại</button>
+    </section>
+
+    <!-- ================= PROGRAM ================= -->
+    <div class="section" id="section-program">
+  <h2>📚 Quản lý chương trình đào tạo & PLO</h2>
+
+  <div class="form-box">
+    <button class="btn primary" onclick="loadPLO()">Danh sách PLO</button>
+    <button class="btn success" onclick="loadPrograms()">Cấu trúc CTĐT</button>
+    <div id="programResult"></div>
+  </div>
+
+  <table class="table">
+    <colgroup>
+      <col style="width: 8%;">
+      <col style="width: 12%;">
+      <col style="width: 55%;">
+      <col style="width: 25%;">
+    </colgroup>
+
+    <thead id="ploThead" style="display:none">
+      <tr>
+        <th>ID</th>
+        <th>Mã PLO</th>
+        <th>Mô tả</th>
+        <th>Thao tác</th>
+      </tr>
+    </thead>
+
+    <tbody id="ploTable">
+      <tr>
+        <td colspan="4" style="text-align:center;">
+          📌 Chọn "Danh sách PLO"
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn ghost" onclick="showSection('dashboard')">
+    ⬅ Quay lại
+  </button>
+</div>
+
+
+    <!-- ================= SEARCH ================= -->
+    <div class="section" id="section-search">
+      <h2>📊 Tra cứu & phân tích đề cương</h2>
+
+      <div class="form-box">
+        <input type="text" id="searchKey" placeholder="Nhập tên / mã học phần">
+        <button class="btn primary" onclick="searchSyllabus()">Tra cứu</button>
+      </div>
+
+      <div id="searchResult"></div>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">⬅ Quay lại</button>
+    </div>
+
+    <!-- ================= NOTIFY ================= -->
+    <div class="section" id="section-notify">
+      <h2>🔔 Thông báo</h2>
+      <ul id="notifyList"></ul>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">⬅ Quay lại</button>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/aa.js"></script>
+</body>
+</html>

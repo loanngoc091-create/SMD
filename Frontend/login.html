@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMD - Login</title>
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+<div class="login-container">
+  <div class="login-box">
+    <img src="images/logo_uth.png" class="login-logo" />
+
+    <h2>Đăng nhập hệ thống</h2>
+
+    <!-- ✅ FORM -->
+    <form id="loginForm">
+      <input type="text" id="email" placeholder="Email" required />
+
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Mật khẩu" required />
+        <img src="images/eye-off.svg" class="toggle-password" />
+      </div>
+
+      <button type="submit">Đăng nhập</button>
+    </form>
+
+    <div class="forgot-password">
+      <a href="#">Quên mật khẩu?</a>
+    </div>
+  </div>
+</div>
+<script src="js/login.js"></script>
+</body>
+</html>

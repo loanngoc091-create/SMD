@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>SMD – Student Dashboard</title>
+  <link rel="stylesheet" href="css/lecture.css" />
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="top-header">
+  <div class="left">
+    <span class="menu-icon">☰</span>
+    <span class="uth">UTH – University of Transport HCMC</span>
+  </div>
+  <div class="right">
+    <span class="user">🎓 Sinh viên</span>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar">
+    <h2 class="logo">SMD System</h2>
+    <p class="sub">Vai trò: Sinh viên</p>
+
+    <nav>
+      <a onclick="showSection('dashboard')" class="active">
+        📚 Môn học của tôi
+      </a>
+      <a onclick="showSection('section-follow')">
+        ⭐ Đề cương theo dõi
+      </a>
+      <a onclick="showSection('section-feedback')">
+        ⚠️ Phản hồi
+      </a>
+     <a class="logout" onclick="logout()">🚪 Đăng xuất</a>
+    </nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="content">
+
+    <h1 class="welcome">Chào bạn 👋</h1>
+     <div style="margin-bottom:15px; display:flex; gap:10px;">
+  <input
+    type="text"
+    id="keyword"
+    placeholder="🔍 Tìm theo tên hoặc mã học phần..."
+    style="flex:1"
+     oninput="searchSyllabus()"
+  />
+  <button class="btn primary" onclick="searchSyllabus()">
+    Tìm
+  </button>
+</div>
+
+    <!-- ================================================= -->
+    <!-- ===== DASHBOARD: COURSE LIST + SYLLABUS ========= -->
+    <!-- ================================================= -->
+    <div class="section active" id="dashboard">
+      <h2>📚 Môn học </h2>
+
+      <!-- Mỗi card = 1 môn học -->
+      <div class="card-grid" id="courseList">
+
+        <!-- JS render mẫu:
+        <div class="card blue">
+          <div class="card-body">
+            <h3>Lập trình Python</h3>
+            <p><b>Mã học phần:</b> IT001</p>
+            <p><b>Đề cương:</b> Đã công bố</p>
+
+            <button
+              class="btn primary"
+              onclick="openSyllabus(12, 'Lập trình Python')">
+              📘 Xem đề cương
+            </button>
+          </div>
+        </div>
+        -->
+
+      </div>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- ============== SYLLABUS DETAIL ================= -->
+    <!-- ================================================= -->
+    <div class="section" id="section-syllabus">
+  <h2 id="courseName">Tên môn học</h2>
+
+  <!-- ===== FILE SYLLABUS ===== -->
+<div class="form-box">
+  <h3>📄 Đề cương gốc</h3>
+  <div id="syllabusFile">
+    <em>Chưa có đề cương</em>
+  </div>
+</div>
+
+  <!-- ===== AI + NỘI DUNG ===== -->
+  <div class="form-box" style="margin-top:20px">
+
+    <h3>🤖 Tóm tắt AI</h3>
+    <p id="aiSummary">
+      <em>Đang cập nhập</em>
+    </p>
+
+    <h3>🗺️ Lộ trình học phần</h3>
+    <ul id="roadmap"><em>Đang cập nhập</em></ul>
+
+    <h3>🎯 Chuẩn đầu ra</h3>
+    <ul id="outcomes"><em>Đang cập nhập</em></ul>
+
+    <div style="margin-top:15px">
+      <button class="btn success" onclick="followSyllabus()">
+        ⭐ Theo dõi đề cương
+      </button>
+      <button
+        class="btn danger"
+        onclick="showSection('section-feedback')">
+        ⚠️ Báo lỗi
+      </button>
+    </div>
+  </div>
+
+  <button class="btn ghost" onclick="showSection('dashboard')">
+    ⬅ Quay lại danh sách môn học
+  </button>
+</div>
+
+    <!-- ================================================= -->
+    <!-- ================= FOLLOW ======================= -->
+    <!-- ================================================= -->
+    <div class="section" id="section-follow">
+      <h2>⭐ Đề cương đang theo dõi</h2>
+
+      <div class="form-box">
+        <ul id="followList">
+          <!-- JS render -->
+        </ul>
+      </div>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">
+        ⬅ Quay lại
+      </button>
+    </div>
+
+    <!-- ================================================= -->
+    <!-- ================= FEEDBACK ===================== -->
+    <!-- ================================================= -->
+    <div class="section" id="section-feedback">
+      <h2>⚠️ Gửi phản hồi / Báo lỗi</h2>
+
+      <div class="form-box">
+        <textarea
+          id="feedbackText"
+          placeholder="Mô tả lỗi trong đề cương..."
+        ></textarea>
+
+        <button class="btn primary" onclick="sendFeedback()">
+          Gửi phản hồi
+        </button>
+      </div>
+
+      <button class="btn ghost" onclick="showSection('dashboard')">
+        ⬅ Quay lại
+      </button>
+    </div>
+
+
+  </main>
+</div>
+
+<script src="js/student.js"></script>
+</body>
+</html>
